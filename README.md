@@ -76,3 +76,9 @@ Users can:
                                v
                             MySQL
 ```
+
+## Screenshots
+
+### Dashboard
+
+![Expense Tracker Dashboard](screenshots/Dashboard.png)

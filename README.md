@@ -79,12 +79,6 @@ Users can:
 
 ## Screenshots
 
-### Dashboard
-
-![Expense Tracker Dashboard](screenshots/Dashboard.png)
-
-## Screenshots
-
 ### Login Page
 
 ![Login Page](screenshots/Login.png)

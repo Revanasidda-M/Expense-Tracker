@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo-mark">₹</span><span>Expense Tracker</span>
+      </div>
+      <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p class="subtext">Sign in to continue managing your money.</p>
+        <div id="message" class="message"></div>
+        <form id="loginForm">
+          <label>Email address</label
+          ><input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+          <label>Password</label
+          ><input
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            required
+          />
+          <button class="primary-btn full" type="submit">Login</button>
+        </form>
+        <p class="auth-link">
+          Don't have an account? <a href="register.html">Create account</a>
+        </p>
+      </div>
+    </div>
+    <script src="js/login.js"></script>
+  </body>
+</html>

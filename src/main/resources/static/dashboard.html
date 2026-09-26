@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">₹</span><span>Expense Tracker</span>
+      </div>
+      <div class="top-user">
+        <span class="avatar">U</span><span id="topUserName">Java User</span
+        ><button id="topUserMenu" class="ghost-btn">⌄</button>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <nav>
+          <button class="nav-btn active" data-section="dashboard">
+            <span class="nav-icon">⌂</span>Dashboard
+          </button>
+          <button class="nav-btn" data-section="add">
+            <span class="nav-icon">⊕</span>Add Expense
+          </button>
+          <button class="nav-btn" data-section="transactions">
+            <span class="nav-icon">☷</span>Transactions
+          </button>
+          <button class="nav-btn" data-section="categories">
+            <span class="nav-icon">◆</span>Categories
+          </button>
+          <button class="nav-btn" data-section="profile">
+            <span class="nav-icon">●</span>Profile
+          </button>
+          <button class="nav-btn logout-nav" id="logoutBtn">
+            <span class="nav-icon">↪</span>Logout
+          </button>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <section id="dashboard" class="page-section active">
+          <div class="dashboard-heading">
+            <div>
+              <h1>
+                Hello, <span id="helloName">Java User</span>!
+                <span class="wave">👋</span>
+              </h1>
+              <p>Here's your spending overview</p>
+            </div>
+            <div class="today-card">
+              <span class="calendar-icon">▣</span>
+              <div><small>Today</small><strong id="todayText"></strong></div>
+              <span>⌄</span>
+            </div>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card income-card">
+              <span class="summary-icon">▣</span>
+              <small>Total Income</small>
+              <strong id="totalIncome">₹ 0</strong>
+              <span class="trend up">↑ 0% <em>from last month</em></span>
+            </article>
+
+            <article class="summary-card expense-card">
+              <span class="summary-icon">▰</span>
+              <small>Total Expenses</small>
+              <strong id="totalExpense">₹ 0</strong>
+              <span class="trend down">↑ 0% <em>from last month</em></span>
+            </article>
+
+            <article class="summary-card balance-card">
+              <span class="summary-icon">●</span>
+              <small>Remaining Balance</small>
+              <strong id="remainingBalance">₹ 0</strong>
+              <span class="trend blue">↑ 0% <em>from last month</em></span>
+            </article>
+
+            <article class="summary-card budget-card">
+              <span class="summary-icon">◉</span>
+              <small>Monthly Budget</small>
+              <strong id="monthlyBudget">₹ 0</strong>
+              <span class="trend purple">Your spending limit</span>
+            </article>
+
+            <article class="summary-card transactions-card">
+              <span class="summary-icon">☷</span>
+              <small>Total Transactions</small>
+              <strong id="totalTransactions">0</strong>
+              <span class="trend purple">↑ 0% <em>from last month</em></span>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel chart-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Expense Overview</h2>
+                  <p>Last 7 days</p>
+                </div>
+                <div class="legend">
+                  <span><b class="dot income-dot"></b>Income</span
+                  ><span><b class="dot expense-dot"></b>Expense</span>
+                </div>
+              </div>
+              <div class="chart-area">
+                <div class="y-labels">
+                  <span>20K</span><span>15K</span><span>10K</span><span>5K</span
+                  ><span>0</span>
+                </div>
+                <div id="barChart" class="bar-chart"></div>
+              </div>
+            </article>
+
+            <article class="panel recent-panel">
+              <div class="panel-head">
+                <h2>Recent Transactions</h2>
+                <button class="text-btn" data-section-go="transactions">
+                  View All
+                </button>
+              </div>
+              <div id="recentTransactions" class="recent-list"></div>
+            </article>
+
+            <div class="side-stack">
+              <button class="big-add-btn" data-section-go="add">
+                <span>⊕</span>Add Expense
+              </button>
+              <article class="panel category-panel">
+                <div class="panel-head">
+                  <h2>Category Summary</h2>
+                  <span class="pie-icon">◔</span>
+                </div>
+                <div id="categorySummary"></div>
+              </article>
+            </div>
+          </div>
+
+          <div class="quick-tip">
+            <span class="bulb">☼</span>
+            <div>
+              <strong>Quick Tips</strong>
+              <p>Keep track of your expenses and save more for your future!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="add" class="page-section">
+          <div class="section-heading">
+            <div>
+              <h1>Add New Expense</h1>
+              <p>Record a transaction and keep your dashboard up to date.</p>
+            </div>
+          </div>
+          <article class="panel form-panel">
+            <div id="transactionMessage" class="message"></div>
+            <form id="transactionForm">
+              <input id="transactionId" type="hidden" />
+              <div class="type-switch">
+                <button
+                  type="button"
+                  data-type="EXPENSE"
+                  class="type-btn active"
+                >
+                  Expense</button
+                ><button type="button" data-type="INCOME" class="type-btn">
+                  Income
+                </button>
+              </div>
+              <div class="form-grid">
+                <div>
+                  <label>Amount (₹)</label
+                  ><input
+                    id="amount"
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="Enter amount"
+                    required
+                  />
+                </div>
+                <div>
+                  <label>Category</label
+                  ><select id="category" required></select>
+                </div>
+                <div>
+                  <label>Date</label
+                  ><input id="transactionDate" type="date" required />
+                </div>
+                <div>
+                  <label>Description</label
+                  ><input
+                    id="description"
+                    maxlength="255"
+                    placeholder="e.g. Lunch, Salary, Bus ticket"
+                  />
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="primary-btn" type="submit">Save Expense</button
+                ><button class="secondary-btn" type="button" id="resetForm">
+                  Reset
+                </button>
+              </div>
+            </form>
+          </article>
+        </section>
+
+        <section id="transactions" class="page-section">
+          <div class="section-heading">
+            <div>
+              <h1>Transactions</h1>
+              <p>Search, filter, edit and delete your transactions.</p>
+            </div>
+            <button class="primary-btn" data-section-go="add">
+              + Add Expense
+            </button>
+          </div>
+          <article class="panel table-panel">
+            <div class="filter-row">
+              <input
+                id="searchInput"
+                placeholder="Search by category or description"
+              /><select id="filterType">
+                <option value="">All Types</option>
+                <option value="EXPENSE">Expense</option>
+                <option value="INCOME">Income</option></select
+              ><select id="filterCategory">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="transactionsBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section id="categories" class="page-section">
+          <div class="section-heading">
+            <div>
+              <h1>Categories</h1>
+              <p>Organize your spending with simple categories.</p>
+            </div>
+          </div>
+          <div id="categoryCards" class="category-cards"></div>
+        </section>
+
+        <section id="profile" class="page-section">
+          <div class="section-heading">
+            <div>
+              <h1>Profile</h1>
+              <p>Update your name and monthly spending budget.</p>
+            </div>
+          </div>
+          <article class="panel profile-panel">
+            <div id="profileMessage" class="message"></div>
+            <form id="profileForm" class="profile-form">
+              <label>Full name</label
+              ><input id="profileName" maxlength="100" required /><label
+                >Email</label
+              ><input id="profileEmail" disabled /><label
+                >Monthly budget (₹)</label
+              ><input
+                id="profileBudget"
+                type="number"
+                min="0"
+                step="0.01"
+                required
+              /><button class="primary-btn" type="submit">Save Profile</button>
+            </form>
+          </article>
+        </section>
+
+        <footer>© 2026 Expense Tracker. All rights reserved.</footer>
+      </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

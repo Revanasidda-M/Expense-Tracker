@@ -1,0 +1,2 @@
+-- Optional demonstration data. First register a user in the application, then use the UI to add data.
+-- Keeping demo data out of the production schema avoids hard-coded passwords in GitHub.

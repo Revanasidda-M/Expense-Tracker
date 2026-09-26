@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <span class="logo-mark">₹</span><span>Expense Tracker</span>
+      </div>
+      <div class="auth-card">
+        <h1>Create your account</h1>
+        <p class="subtext">Start tracking income and expenses in one place.</p>
+        <div id="message" class="message"></div>
+        <form id="registerForm">
+          <label>Full name</label
+          ><input
+            id="name"
+            type="text"
+            placeholder="Your full name"
+            maxlength="100"
+            required
+          />
+          <label>Email address</label
+          ><input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            maxlength="150"
+            required
+          />
+          <label>Password</label
+          ><input
+            id="password"
+            type="password"
+            placeholder="Minimum 6 characters"
+            minlength="6"
+            required
+          />
+          <label>Monthly budget (₹)</label
+          ><input
+            id="monthlyBudget"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="30000"
+          />
+          <button class="primary-btn full" type="submit">Create Account</button>
+        </form>
+        <p class="auth-link">
+          Already have an account? <a href="login.html">Login</a>
+        </p>
+      </div>
+    </div>
+    <script src="js/register.js"></script>
+  </body>
+</html>

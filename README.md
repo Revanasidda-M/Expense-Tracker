@@ -82,3 +82,33 @@ Users can:
 ### Dashboard
 
 ![Expense Tracker Dashboard](screenshots/Dashboard.png)
+
+## Screenshots
+
+### Login Page
+
+![Login Page](screenshots/Login.png)
+
+### Register Page
+
+![Register Page](screenshots/Register.png)
+
+### Dashboard
+
+![Dashboard](screenshots/Dashboard.png)
+
+### Add Expense
+
+![Add Expense](screenshots/Add-Expense.png)
+
+### Transactions
+
+![Transactions](screenshots/Transactions.png)
+
+### Categories
+
+![Categories](screenshots/Categories.png)
+
+### Profile
+
+![Profile](screenshots/Profile.png)
